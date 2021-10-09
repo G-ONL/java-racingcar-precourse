@@ -18,4 +18,13 @@ public class CarTest {
         car.move(10);
         assertThat(car.isNowPosition(3)).isFalse();
     }
+
+    @Test
+    void 숫자_0부터_3까지_멈춤() {
+        Car car = new Car();
+        car.move(0);
+        assertThat(car.isNowPosition(0)).isTrue();
+        car.move(3);
+        assertThat(car.isNowPosition(0)).isTrue();
+    }
 }
