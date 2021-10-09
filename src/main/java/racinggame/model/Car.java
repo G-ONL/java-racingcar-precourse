@@ -5,8 +5,8 @@ import racinggame.common.GameConstant;
 public class Car {
     private static final int NAME_LENGTH_MIN = 1;
     private static final int NAME_LENGTH_MAX = 5;
-    private int position;
     private final String name;
+    private int position;
 
     public Car(String name) {
         if (name == null
@@ -20,8 +20,7 @@ public class Car {
         if (num < GameConstant.STOP_MIN
                 || num > GameConstant.MOVING_MAX)
             throw new IllegalArgumentException();
-        if (num >= GameConstant.MOVING_MIN
-                && num <= GameConstant.MOVING_MAX)
+        if (num >= GameConstant.MOVING_MIN)
             position++;
     }
 
