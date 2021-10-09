@@ -1,30 +1,40 @@
 package racinggame.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racinggame.common.GameConstant;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
+    private Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car();
+    }
+
     @Test
     void 숫자_4부터_9까지_움직임() {
-        Car car = new Car();
-        car.move(3);
-        assertThat(car.isNowPosition(1)).isFalse();
-        car.move(4);
+        car.move(GameConstant.MOVING_START_VALUE);
         assertThat(car.isNowPosition(1)).isTrue();
-        car.move(9);
+        car.move(GameConstant.MOVING_END_VALUE);
         assertThat(car.isNowPosition(2)).isTrue();
-        car.move(10);
-        assertThat(car.isNowPosition(3)).isFalse();
+        assertThatThrownBy(() -> {
+            car.move(10);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 숫자_0부터_3까지_멈춤() {
-        Car car = new Car();
-        car.move(0);
+        assertThatThrownBy(() -> {
+            car.move(-1);
+        }).isInstanceOf(IllegalArgumentException.class);
+        car.move(GameConstant.STOP_START_VALUE);
         assertThat(car.isNowPosition(0)).isTrue();
-        car.move(3);
+        car.move(GameConstant.STOP_END_VALUE);
         assertThat(car.isNowPosition(0)).isTrue();
     }
 }
