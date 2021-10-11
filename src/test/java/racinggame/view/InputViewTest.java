@@ -1,28 +1,35 @@
 package racinggame.view;
 
 import nextstep.utils.Console;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 
 public class InputViewTest {
 
-    @Test
-    void 쉼표_기준으로_문자열_자르기() {
+    @ParameterizedTest
+    @CsvSource(value = {"faker,show,maker:3", "faker:1"}, delimiter = ':')
+    void 쉼표_기준으로_문자열_자르기(String inputValue, int length) {
         try (final MockedStatic<Console> mockConsole = mockStatic(Console.class)) {
             mockConsole.when(() -> Console.readLine())
-                    .thenReturn("faker,show,maker")
-                    .thenReturn("faker");
-
+                    .thenReturn(inputValue);
             String[] carNames = InputView.inputCarNames();
-            assertThat(carNames).isEqualTo(new String[]{"faker", "show", "maker"});
-            assertThat(carNames.length).isEqualTo(3);
+            assertThat(carNames.length).isEqualTo(length);
+        }
+    }
 
-            String[] carName = InputView.inputCarNames();
-            assertThat(carName).isEqualTo((new String[]{"faker"}));
-            assertThat(carName.length).isEqualTo(1);
+    @ParameterizedTest
+    @ValueSource(strings = {"가", "", "!", "abs"})
+    void 숫자만_입력이_가능하다(String inputValue) {
+        try (final MockedStatic<Console> mockConsole = mockStatic(Console.class)) {
+            mockConsole.when(() -> Console.readLine())
+                    .thenReturn(inputValue);
+            assertThatThrownBy(() -> InputView.inputGameNumber()).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
