@@ -51,4 +51,10 @@ public class CarTest {
             Car car = new Car(name);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 현재_위치_to_string(){
+        car.move(GameConstant.MOVING_MIN);
+        assertThat(car.toString()).isEqualTo("faker:-");
+    }
 }

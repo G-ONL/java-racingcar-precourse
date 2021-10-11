@@ -1,20 +1,19 @@
 package racinggame.model;
 
-import racinggame.common.GameConstant;
+import racinggame.utils.GameConstant;
+import racinggame.utils.ValidationUtils;
+
+import java.util.Objects;
 
 public class Car {
-    private static final int NAME_LENGTH_MIN = 1;
-    private static final int NAME_LENGTH_MAX = 5;
     private final String name;
     private int position;
 
     public Car(String name) {
-        if (name == null
-                || name.length() > NAME_LENGTH_MAX
-                || name.length() < NAME_LENGTH_MIN)
-            throw new IllegalArgumentException();
+        ValidationUtils.validNameLength(name);
         this.name = name;
     }
+
 
     public void move(int num) {
         if (num < GameConstant.STOP_MIN
@@ -26,5 +25,33 @@ public class Car {
 
     public boolean isNowPosition(int position) {
         return this.position == position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return name + ":" + printPosition();
+    }
+
+    private String printPosition() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
     }
 }
