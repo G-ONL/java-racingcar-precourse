@@ -3,11 +3,9 @@ package racinggame.view;
 import nextstep.utils.Console;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mockStatic;
 
 public class InputViewTest {
@@ -23,13 +21,4 @@ public class InputViewTest {
         }
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"가", "", "!", "abs"})
-    void 숫자만_입력이_가능하다(String inputValue) {
-        try (final MockedStatic<Console> mockConsole = mockStatic(Console.class)) {
-            mockConsole.when(() -> Console.readLine())
-                    .thenReturn(inputValue);
-            assertThatThrownBy(() -> InputView.inputGameNumber()).isInstanceOf(IllegalArgumentException.class);
-        }
-    }
 }

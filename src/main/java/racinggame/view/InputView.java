@@ -18,7 +18,7 @@ public class InputView {
         do {
             System.out.println(INPUT_GAME_NUMBER_GUIDE_MESSAGE);
             input = Console.readLine();
-        } while (ValidationUtils.validGameNumber(input));
+        } while (!ValidationUtils.validGameNumber(input));
         return Integer.parseInt(input);
     }
 }
