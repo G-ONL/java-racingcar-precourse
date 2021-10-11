@@ -1,4 +1,4 @@
-package racinggame.common;
+package racinggame.utils;
 
 public final class GameConstant {
     public static final int MOVING_MIN = 4;

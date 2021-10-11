@@ -1,8 +1,12 @@
 package racinggame.model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.common.GameConstant;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.utils.GameConstant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -38,24 +42,13 @@ public class CarTest {
         assertThat(car.isNowPosition(0)).isTrue();
     }
 
-    @Test
-    void 이름은_5자_초과일_경우_exception() {
+    @DisplayName("이름이 5자 초과, empty, null 일 경우 IllegalException")
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"abcdef"})
+    void 이름은_5자_초과_empty_null일_경우_exception(String name) {
         assertThatThrownBy(() -> {
-            Car longNameCar = new Car("abcdef");
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 이름은_empty일_경우_exception() {
-        assertThatThrownBy(() -> {
-            Car emptyNameCar = new Car("");
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 이름은_null일_경우_exception() {
-        assertThatThrownBy(() -> {
-            Car longNameCar = new Car(null);
+            Car car = new Car(name);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
