@@ -3,14 +3,9 @@ package racinggame.model;
 import racinggame.view.OutputView;
 
 public class Round {
-    private final Cars cars;
-
-    public Round(Cars cars) {
-        this.cars = cars;
-    }
-
-    public void start() {
+    public static Result start(Cars cars) {
         cars.moveCar();
         OutputView.printPlayerNameAndScore(cars);
+        return new Result(cars);
     }
 }

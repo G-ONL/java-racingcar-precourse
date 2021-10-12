@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import racinggame.view.OutputView;
+
 public class Race {
     private final int number;
 
@@ -7,10 +9,12 @@ public class Race {
         this.number = number;
     }
 
-    public void start(Cars cars) {
+    public Result start(Cars cars) {
+        OutputView.printResultGuideMessage();
+        Result result = null;
         for (int i = 0; i < number; i++) {
-            Round round = new Round(cars);
-            round.start();
+            result = Round.start(cars);
         }
+        return result;
     }
 }
