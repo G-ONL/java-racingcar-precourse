@@ -1,5 +1,6 @@
 package racinggame.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,9 +8,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
+    Car car;
+
+    @BeforeEach
+    void init() {
+        car = new Car("name");
+    }
+
     @Test
     void 숫자_4미만인_경우_정지한다() {
-        Car car = new Car();
         car.move(3);
         Position position = new Position();
         position.moveForward();
@@ -18,7 +25,6 @@ public class CarTest {
 
     @Test
     void 숫자_0미만인_경우_exception() {
-        Car car = new Car();
         assertThatThrownBy(() -> {
             car.move(-1);
         }).isInstanceOf(IllegalArgumentException.class);
@@ -26,7 +32,6 @@ public class CarTest {
 
     @Test
     void 숫자_4이상인_경우_전진한다() {
-        Car car = new Car();
         car.move(4);
         Position position = new Position();
         position.moveForward();
@@ -35,9 +40,15 @@ public class CarTest {
 
     @Test
     void 숫자_9초과인_경우_exception() {
-        Car car = new Car();
         assertThatThrownBy(() -> {
             car.move(10);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 자동차_이름_5자_넘으면_exception() {
+        assertThatThrownBy(() -> {
+            Car car = new Car("abcdefg");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

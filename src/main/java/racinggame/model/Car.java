@@ -6,8 +6,10 @@ public class Car {
     public static final int MOVE_FORWARD_MAX_VALUE = 9;
     public static final int STOP_MIN_VALUE = 0;
     private final Position position;
+    private final CarName name;
 
-    public Car() {
+    public Car(String name) {
+        this.name = new CarName(name);
         this.position = new Position();
     }
 
