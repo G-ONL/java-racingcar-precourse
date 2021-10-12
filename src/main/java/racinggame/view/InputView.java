@@ -13,7 +13,7 @@ public class InputView {
         try {
             System.out.println(CAR_NAME_GUIDE_MESSAGE);
             input = Console.readLine();
-            ValidationUtils.validName(input);
+            ValidationUtils.validNullAndEmpty(input);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR);
             inputCarNames();
