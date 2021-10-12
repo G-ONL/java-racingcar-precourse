@@ -11,8 +11,8 @@ public class ValidationUtilsTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"가", "@#"})
-    void 숫자_이외에_exception(String value) {
+    @ValueSource(strings = {"가", "@#", "0","-1"})
+    void 숫자0과_나머지_양수_이외에_exception(String value) {
         assertThatThrownBy(() -> {
             ValidationUtils.validNumber(value);
         }).isInstanceOf(IllegalArgumentException.class);

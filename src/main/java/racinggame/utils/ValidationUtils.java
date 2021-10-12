@@ -5,10 +5,15 @@ import java.util.Objects;
 public class ValidationUtils {
     private static final String ONLY_NUMBER = "^[0-9]+$";
     private static final char COMMA = ',';
+    private static final int ZERO = 0;
     private static final int MAXIMUM_NAME_LENGTH = 5;
 
     public static void validNumber(String input) {
-        if (Objects.isNull(input) || !input.matches(ONLY_NUMBER)) throw new IllegalArgumentException();
+        if (Objects.isNull(input) || !input.matches(ONLY_NUMBER) || isZero(input)) throw new IllegalArgumentException();
+    }
+
+    private static boolean isZero(String input) {
+        return Integer.parseInt(input) == ZERO;
     }
 
     public static void validNullAndEmpty(String input) {
