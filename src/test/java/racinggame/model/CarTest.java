@@ -18,9 +18,7 @@ public class CarTest {
     @Test
     void 숫자_4미만인_경우_정지한다() {
         car.move(3);
-        Position position = new Position();
-        position.moveForward();
-        assertThat(car.isSamePosition(position)).isFalse();
+        assertThat(car.isSamePosition(1)).isFalse();
     }
 
     @Test
@@ -33,9 +31,7 @@ public class CarTest {
     @Test
     void 숫자_4이상인_경우_전진한다() {
         car.move(4);
-        Position position = new Position();
-        position.moveForward();
-        assertThat(car.isSamePosition(position)).isTrue();
+        assertThat(car.isSamePosition(1)).isTrue();
     }
 
     @Test

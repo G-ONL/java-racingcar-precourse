@@ -18,8 +18,8 @@ public class Car {
         if (value >= MOVE_FORWARD_MIN_VALUE) position.moveForward();
     }
 
-    public boolean isSamePosition(Position position) {
-        return this.position.equals(position);
+    public boolean isSamePosition(int position) {
+        return this.position.getValue() == position;
     }
 
     public String getName() {
