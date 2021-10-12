@@ -26,4 +26,8 @@ public class RacingCarGame {
             cars.add(new Car(name));
         }
     }
+
+    public static Race initRace() {
+        return new Race(InputView.inputGameNumber());
+    }
 }
