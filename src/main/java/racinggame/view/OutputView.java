@@ -21,14 +21,6 @@ public class OutputView {
         System.out.println();
     }
 
-    private static String getPositionView(int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(POSITION_UNIT);
-        }
-        return stringBuilder.toString();
-    }
-
     public static void printResultGuideMessage() {
         System.out.println();
         System.out.println(RESULT_GUIDE_MESSAGE);
@@ -40,5 +32,13 @@ public class OutputView {
 
     public static void printErrorMessage() {
         System.out.println(ERROR);
+    }
+
+    private static String getPositionView(int position) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append(POSITION_UNIT);
+        }
+        return stringBuilder.toString();
     }
 }

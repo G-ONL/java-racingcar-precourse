@@ -1,7 +1,6 @@
 package racinggame.model;
 
 public class Car {
-
     public static final int MOVE_FORWARD_MIN_VALUE = 4;
     public static final int MOVE_FORWARD_MAX_VALUE = 9;
     public static final int STOP_MIN_VALUE = 0;
