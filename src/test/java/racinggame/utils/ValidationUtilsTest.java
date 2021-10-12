@@ -16,4 +16,12 @@ public class ValidationUtilsTest {
             ValidationUtils.validNumber(value);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈값_null_exception(String value) {
+        assertThatThrownBy(() -> {
+            ValidationUtils.validName(value);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
