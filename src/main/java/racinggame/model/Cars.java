@@ -1,6 +1,7 @@
 package racinggame.model;
 
 import nextstep.utils.Randoms;
+import racinggame.view.OutputView;
 
 import java.util.List;
 
@@ -17,12 +18,7 @@ public class Cars {
         }
     }
 
-    public String getResult() {
-        StringBuilder result = new StringBuilder();
-        for (Car car : cars) {
-            result.append(car.toString()).append("\n");
-        }
-        result.append("\n");
-        return result.toString();
+    public void printPositions() {
+        OutputView.printPositions(cars);
     }
 }

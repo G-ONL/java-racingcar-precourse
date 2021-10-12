@@ -17,7 +17,7 @@ public class RacingCarGameController {
         OutputView.print("실행 결과");
         for (int i = 0; i < gameNumber; i++) {
             cars.move();
-            OutputView.print(cars.getResult());
+            cars.printPositions();
         }
     }
 }

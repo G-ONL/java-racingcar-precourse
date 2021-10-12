@@ -2,6 +2,7 @@ package racinggame.model;
 
 import racinggame.utils.GameConstant;
 import racinggame.utils.ValidationUtils;
+import racinggame.view.OutputView;
 
 import java.util.Objects;
 
@@ -42,16 +43,7 @@ public class Car {
         return name != null ? name.hashCode() : 0;
     }
 
-    @Override
-    public String toString() {
-        return name + ":" + printPosition();
-    }
-
-    private String printPosition() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
+    public void printPosition() {
+        OutputView.printPosition(name, position);
     }
 }
