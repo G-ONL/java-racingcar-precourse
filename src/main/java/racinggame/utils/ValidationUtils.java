@@ -13,6 +13,10 @@ public class ValidationUtils {
                 isEmpty(input)) throw new IllegalArgumentException();
     }
 
+    public static void validLastCharComma(String input) {
+        if (input.charAt(input.length() - 1) == ',') throw new IllegalArgumentException();
+    }
+
     private static boolean isEmpty(String input) {
         return input.equals("");
     }

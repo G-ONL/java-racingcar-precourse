@@ -14,6 +14,7 @@ public class InputView {
             System.out.println(CAR_NAME_GUIDE_MESSAGE);
             input = Console.readLine();
             ValidationUtils.validNullAndEmpty(input);
+            ValidationUtils.validLastCharComma(input);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR);
             inputCarNames();

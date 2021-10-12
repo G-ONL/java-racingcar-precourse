@@ -1,5 +1,6 @@
 package racinggame.utils;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,6 +23,13 @@ public class ValidationUtilsTest {
     void 빈값_null_exception(String value) {
         assertThatThrownBy(() -> {
             ValidationUtils.validNullAndEmpty(value);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 마지막_글자_콤마이면_exception() {
+        assertThatThrownBy(() -> {
+            ValidationUtils.validLastCharComma("asdasd,");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
