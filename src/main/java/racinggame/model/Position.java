@@ -8,6 +8,10 @@ public class Position {
         position += DEFAULT_MOVE_VALUE;
     }
 
+    public int getValue() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

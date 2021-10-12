@@ -2,6 +2,7 @@ package racinggame.model;
 
 import nextstep.utils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -9,6 +10,10 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(this.cars);
     }
 
     public void moveCar() {
