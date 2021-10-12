@@ -21,7 +21,7 @@ public class ValidationUtilsTest {
     @NullAndEmptySource
     void 빈값_null_exception(String value) {
         assertThatThrownBy(() -> {
-            ValidationUtils.validName(value);
+            ValidationUtils.validNullAndEmpty(value);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
