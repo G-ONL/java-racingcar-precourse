@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -18,7 +20,7 @@ public class Cars {
 
     public void moveCar() {
         for (Car car : cars) {
-            car.move(Randoms.pickNumberInRange(0, 9));
+            car.move(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
     }
 }
